@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import AlpacaPreview from "./components/AlpacaPreview";
+import ControlPanel from "./components/ControlPanel";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [alpacaParts, setAlpacaParts] = useState({
+    accessory: "",
+    background: "dark-blue",
+    ears: "default",
+    eyes: "default",
+    hair: "default",
+    leg: "default",
+    mouth: "default",
+    neck: "default",
+    nose: "nose",
+  });
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="h-full max-w-full bg-gray-200">
+      <h1 className="flex justify-center pt-10 text-4xl text-blue-950">
+        Alpaca Generator
+      </h1>
+      <div className="flex flex-col items-center sm:mx-10 sm:flex-row sm:items-start sm:justify-center sm:gap-10">
+        <AlpacaPreview alpacaParts={alpacaParts} />
+        <ControlPanel setAlpacaParts={setAlpacaParts} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
